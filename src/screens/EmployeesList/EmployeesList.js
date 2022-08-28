@@ -60,7 +60,7 @@ function TablePaginationActions(props) {
   };
 
   return (
-    <Box sx={{ flexShrink: 0, ml: 2.5 }}>
+    <Box sx={{ flexShrink: 0, ml: 1 }}>
       <IconButton
         onClick={handleFirstPageButtonClick}
         disabled={page === 0}
@@ -148,6 +148,7 @@ export default function EmployeesList(props) {
 
   function handleChangePage(event, newPage) {
     setPage(newPage);
+    setSelectAll(false);
   }
 
   function handleChangeRowsPerPage(event) {
@@ -172,7 +173,7 @@ export default function EmployeesList(props) {
   }
 
   function handleSearch() {
-    const reg = new RegExp(searchText);
+    const reg = (new RegExp(searchText,"i"));
     let newArr = fetchedList.filter((obj) => {
       const values = Object.values(obj);
       for (let i = 0; i < values.length; i++) {
@@ -221,7 +222,7 @@ export default function EmployeesList(props) {
           <Table sx={{ minWidth: 700 }} aria-label="customized table">
             <TableHead>
               <TableRow>
-                <StyledTableCell align="center">
+                <StyledTableCell align="center" sx={{ width: 0.01 }}>
                   <ToggleButton
                     value="check"
                     selected={selectAll}
@@ -267,30 +268,32 @@ export default function EmployeesList(props) {
                       />
                     </ToggleButton>
                   </StyledTableCell>
-                  <StyledTableCell align="center">
+                  <StyledTableCell align="center" sx={{ width: 0.07 }}>
                     {row.details ? (
                       <Link to={`/employee?id=${row.id}`}>{row.id}</Link>
                     ) : (
                       row.id
                     )}
                   </StyledTableCell>
-                  <StyledTableCell align="center">
+                  <StyledTableCell align="center" sx={{ width: 0.2 }}>
                     {`${row.first_name} ${row.last_name}`}
                   </StyledTableCell>
-                  <StyledTableCell align="center">
+                  <StyledTableCell align="center" sx={{ width: 0.1 }}>
                     {row.date_of_birth}
                   </StyledTableCell>
-                  <StyledTableCell align="center">
+                  <StyledTableCell align="center" sx={{ width: 0.2 }}>
                     {row.address}
                   </StyledTableCell>
-                  <StyledTableCell align="center">
+                  <StyledTableCell align="center" sx={{ width: 0.1 }}>
                     {row.date_of_joining}
                   </StyledTableCell>
-                  <StyledTableCell align="center">{row.salary}</StyledTableCell>
-                  <StyledTableCell align="center">
+                  <StyledTableCell align="center" sx={{ width: 0.07 }}>
+                    {row.salary}
+                  </StyledTableCell>
+                  <StyledTableCell align="center" sx={{ width: 0.15 }}>
                     {row.designation}
                   </StyledTableCell>
-                  <StyledTableCell align="center">
+                  <StyledTableCell align="center" sx={{ width: 0.1 }}>
                     {row.manager_id}
                   </StyledTableCell>
                 </StyledTableRow>
