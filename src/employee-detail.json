@@ -1,0 +1,13 @@
+{
+  "data": [
+    {
+      "first_name": "Alex",
+      "last_name": "Whatman",
+      "date_of_birth": "24/11/1986",
+      "address": "Seatlle",
+      "date_of_joining": "20/07/2010",
+      "salary": "30000",
+      "designation": "VP, Academics"
+    }
+  ]
+}
