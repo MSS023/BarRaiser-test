@@ -74,12 +74,12 @@ export default function EmployeeDetail(props) {
   }
 
   return (
-    <div className="employee-detail w-100 h-100 ">
+    <div className="employee-detail w-100 h-100">
       <TableContainer
         component={Paper}
-        className="d-flex align-items-center justify-content-center h-100"
+        className="d-flex align-items-center justify-content-center h-100 px-3"
       >
-        <Table sx={{ minWidth: 700, width: 0.7 }} aria-label="customized table">
+        <Table sx={{maxWidth: 700}} aria-label="customized table">
           <TableHead>
             <TableRow>
               {columns.map((value, index) => {
