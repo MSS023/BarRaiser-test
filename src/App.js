@@ -9,7 +9,9 @@ function App() {
   return (
     <div className="App d-flex flex-column w-100">
       <Navbar bg="dark" variant="dark" expand="md" collapseOnSelect>
-        <Navbar.Brand href="#home" className="ms-2">BarRaiser.Test</Navbar.Brand>
+        <Navbar.Brand href="#home" className="ms-2">
+          BarRaiser.Test
+        </Navbar.Brand>
         <Container>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">

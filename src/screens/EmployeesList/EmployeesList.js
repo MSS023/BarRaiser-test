@@ -129,6 +129,8 @@ export default function EmployeesList(props) {
   const [searchText, setSearchText] = useState("");
   const [fetchedList, setFetchedList] = useLocalStorage("list", []);
   const [loading, setLoading] = useState(true);
+  const [salaryStart, setSalaryStart] = useState("0");
+  const [salaryEnd, setSalaryEnd] = useState("0");
   const emptyRows =
     page > 0 ? Math.max(0, (1 + page) * rowsPerPage - data.length) : 0;
 
@@ -173,7 +175,7 @@ export default function EmployeesList(props) {
   }
 
   function handleSearch() {
-    const reg = (new RegExp(searchText,"i"));
+    const reg = new RegExp(searchText, "i");
     let newArr = fetchedList.filter((obj) => {
       const values = Object.values(obj);
       for (let i = 0; i < values.length; i++) {
@@ -188,6 +190,16 @@ export default function EmployeesList(props) {
       return false;
     });
     setData([...newArr]);
+  }
+
+  function handleSalarySearch() {
+    let searchResult = fetchedList.filter((obj) => {
+      let salary = parseInt(obj.salary.split(",").join(""));
+      const salaryS = parseInt(salaryStart);
+      const salaryE = parseInt(salaryEnd);
+      return salary >= salaryS && salary <= salaryE;
+    });
+    setData([...searchResult]);
   }
 
   if (loading) {
@@ -210,6 +222,31 @@ export default function EmployeesList(props) {
             variant="outline-secondary"
             id="button-addon2"
             onClick={handleSearch}
+          >
+            Search
+          </Button>
+        </InputGroup>
+        <InputGroup size="lg" className="my-3">
+          <Form.Control
+            placeholder="Search"
+            aria-label="Salary start"
+            aria-describedby="basic-addon3"
+            onChange={(e) => {
+              setSalaryStart(e.target.value);
+            }}
+          />
+          <Form.Control
+            placeholder="Search"
+            aria-label="Salary end"
+            aria-describedby="basic-addon4"
+            onChange={(e) => {
+              setSalaryEnd(e.target.value);
+            }}
+          />
+          <Button
+            variant="outline-secondary"
+            id="button-addon2"
+            onClick={handleSalarySearch}
           >
             Search
           </Button>

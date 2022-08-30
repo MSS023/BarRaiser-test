@@ -49,6 +49,7 @@ export function makeHeirarchy(d) {
     obj["id"] = root.id;
     obj["full_name"] = root.first_name + " " + root.last_name;
     obj["designation"] = root.designation;
+    obj["salary"] = root.salary;
     heirarchy.push(obj);
     memo.push(obj);
   });
@@ -64,6 +65,7 @@ export function makeHeirarchy(d) {
       newObj["id"] = val.id;
       newObj["full_name"] = `${val.first_name} ${val.last_name}`;
       newObj["designation"] = val.designation;
+      newObj["salary"] = val.salary;
       node.team.push(newObj);
       memo.push(newObj);
     });
